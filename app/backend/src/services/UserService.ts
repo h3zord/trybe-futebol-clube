@@ -8,13 +8,17 @@ export default class UserService {
   constructor(private userModel = UserModel) {}
 
   public async validateLogin(RequestEmail: string, RequestPassword: string) {
-    VerifyFields.validateFields(RequestEmail, RequestPassword);
+    const verifyFields = new VerifyFields(RequestEmail, RequestPassword);
+
+    verifyFields.validateFields();
 
     const result = await this.userModel.findOne({ where: { email: RequestEmail } });
 
     if (!result) throw new HttpException(401, 'Incorrect email or password');
 
-    VerifyPassword.validatePassword(result, RequestPassword);
+    const verifyPassword = new VerifyPassword(result, RequestPassword);
+
+    verifyPassword.validatePassword();
   }
 
   public async getRole(token: string) {

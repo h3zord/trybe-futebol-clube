@@ -3,11 +3,12 @@ import HttpException from '../utils/HttpException';
 import IUser from '../interfaces/IUser';
 
 export default class VerifyPassword {
-  public static validatePassword(user: IUser, requestPassword: string) {
-    const checkPass = bcrypt.compareSync(requestPassword, user.password);
+  constructor(private user: IUser, private requestPassword: string) {
+  }
 
-    if (!checkPass) {
-      throw new HttpException(401, 'Incorrect email or password');
-    }
+  public validatePassword() {
+    const checkPass = bcrypt.compareSync(this.requestPassword, this.user.password);
+
+    if (!checkPass) throw new HttpException(401, 'Incorrect email or password');
   }
 }
