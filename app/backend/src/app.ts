@@ -2,15 +2,18 @@ import * as express from 'express';
 import 'express-async-errors';
 import ErrorMiddleware from './middlewares/ErrorMiddleware';
 import LoginRoutes from './routes/LoginRoutes';
+import TeamRoutes from './routes/TeamRoutes';
 
 class App {
   public app: express.Express;
   private loginRoutes: LoginRoutes;
+  private teamRoutes: TeamRoutes;
 
   constructor() {
     this.app = express();
 
     this.loginRoutes = new LoginRoutes();
+    this.teamRoutes = new TeamRoutes();
 
     this.config();
 
@@ -30,6 +33,7 @@ class App {
     this.app.use(accessControl);
 
     this.app.use('/login', this.loginRoutes.loginRouter);
+    this.app.use('/teams', this.teamRoutes.teamRouter);
 
     this.app.use(ErrorMiddleware.catchError);
   }

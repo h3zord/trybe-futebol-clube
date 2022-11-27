@@ -7,7 +7,7 @@ import Token from '../entities/Token';
 export default class UserService {
   constructor(private userModel = UserModel) {}
 
-  public async validateLogin(RequestEmail: string, RequestPassword: string) {
+  public async validateLogin(RequestEmail: string, RequestPassword: string): Promise<void> {
     const verifyFields = new VerifyFields(RequestEmail, RequestPassword);
 
     verifyFields.validateFields();
