@@ -20,6 +20,7 @@ export default class UserController {
 
     if (token) {
       const role = await this.userService.getRole(token);
+
       res.status(200).json({ role });
     }
   }
