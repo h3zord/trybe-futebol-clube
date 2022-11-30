@@ -23,5 +23,7 @@ export default class UserController {
 
       res.status(200).json({ role });
     }
+
+    res.status(500).end();
   }
 }
