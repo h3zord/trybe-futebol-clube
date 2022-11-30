@@ -21,9 +21,9 @@ export default class UserController {
     if (token) {
       const role = await this.userService.getRole(token);
 
-      res.status(200).json({ role });
+      return res.status(200).json({ role });
     }
 
-    res.status(500).end();
+    res.status(401).json({ message: 'Token not found' });
   }
 }

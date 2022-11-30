@@ -12,10 +12,6 @@ export default class Token {
   }
 
   public static validateToken(token: string) {
-    if (!token) {
-      throw new HttpException(401, 'Token not found');
-    }
-
     try {
       const { data } = jwt.verify(token, process.env.JWT_SECRET as string) as ITokenData;
       return data;

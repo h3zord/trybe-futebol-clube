@@ -55,12 +55,20 @@ describe('Get role', () => {
     expect(chaiHttpResponse.body).to.be.deep.equal({});
   });
 
-  it('Testando se retorna o erro 500 se não houve token', async () => {
+  it('Testando se retorna o erro 500 se não houver token', async () => {
     chaiHttpResponse = await chai
        .request(app).get('/login/validate')
        .set('Authorization', '');
 
-    expect(chaiHttpResponse.body).to.be.equal(500);
+    expect(chaiHttpResponse.status).to.be.equal(401);
+  });
+
+  it('Testando se retorna a mensagem invalid token, com um token inválido', async () => {
+    chaiHttpResponse = await chai
+       .request(app).get('/login/validate')
+       .set('Authorization', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImVtYWlsIjoiYWRtaW5AYWRtaW4uY29tIiwicGFzc3dvcmQiOiJzZWNyZXRfYWRtaW4ifSwiaWF0IjoxNjY5NDY2Mzg2LCJleHAiOjE2NzAwNzExODZ9.XGT7qkREOC1ujIAo4DUbsUp39QsKLQZRc9gEQHt23rEs');
+
+    expect(chaiHttpResponse.body).to.be.deep.equal({ message: 'Invalid token' });
   });
 
 });

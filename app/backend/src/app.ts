@@ -3,17 +3,20 @@ import 'express-async-errors';
 import ErrorMiddleware from './middlewares/ErrorMiddleware';
 import LoginRoutes from './routes/LoginRoutes';
 import TeamRoutes from './routes/TeamRoutes';
+import MatchRoutes from './routes/MatchRoutes';
 
 class App {
   public app: express.Express;
   private loginRoutes: LoginRoutes;
   private teamRoutes: TeamRoutes;
+  private matchRoutes: MatchRoutes;
 
   constructor() {
     this.app = express();
 
     this.loginRoutes = new LoginRoutes();
     this.teamRoutes = new TeamRoutes();
+    this.matchRoutes = new MatchRoutes();
 
     this.config();
 
@@ -34,6 +37,7 @@ class App {
 
     this.app.use('/login', this.loginRoutes.loginRouter);
     this.app.use('/teams', this.teamRoutes.teamRouter);
+    this.app.use('/matches', this.matchRoutes.matchRouter);
 
     this.app.use(ErrorMiddleware.catchError);
   }
