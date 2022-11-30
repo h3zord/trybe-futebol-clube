@@ -16,6 +16,6 @@ export default class MatchRoutes {
 
     this.matchRouter
       .get('/', (req: Request, res: Response) => this.matchController
-        .getAll(req, res));
+        .findByProgress(req, res));
   }
 }

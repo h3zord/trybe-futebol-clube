@@ -21,7 +21,7 @@ export default class UserService {
     verifyPassword.validatePassword();
   }
 
-  public async getRole(token: string) {
+  public async getRole(token: string): Promise<string | undefined> {
     const { email } = Token.validateToken(token);
 
     const result = await this.userModel.findOne({ where: { email } });
