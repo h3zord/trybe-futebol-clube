@@ -4,17 +4,17 @@ import TeamService from '../services/TeamService';
 export default class TeamController {
   constructor(private teamService: TeamService) {}
 
-  public async getAll(_req: Request, res: Response): Promise<void> {
+  public async getAll(_req: Request, res: Response): Promise<Response> {
     const result = await this.teamService.getAll();
 
-    res.status(200).json(result);
+    return res.status(200).json(result);
   }
 
-  public async findById(req: Request, res: Response): Promise<void> {
+  public async findById(req: Request, res: Response): Promise<Response> {
     const { id } = req.params;
 
     const result = await this.teamService.findById(id);
 
-    res.status(200).json(result);
+    return res.status(200).json(result);
   }
 }

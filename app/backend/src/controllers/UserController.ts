@@ -5,12 +5,12 @@ import UserService from '../services/UserService';
 export default class UserController {
   constructor(private userService: UserService) {}
 
-  public async validateLogin(req: Request, res: Response): Promise<void> {
+  public async validateLogin(req: Request, res: Response): Promise<Response> {
     await this.userService.validateLogin(req.body);
 
     const token = Token.createToken(req.body);
 
-    res.status(200).json({ token });
+    return res.status(200).json({ token });
   }
 
   public async getRole(req: Request, res: Response): Promise<Response> {

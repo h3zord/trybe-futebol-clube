@@ -7,7 +7,7 @@ export default class TokenMiddleware {
     if (token) {
       Token.validateToken(token);
     } else {
-      res.status(401).json({ message: 'Token not found' });
+      return res.status(401).json({ message: 'Token not found' });
     }
 
     next();

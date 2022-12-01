@@ -14,7 +14,7 @@ const { app } = new App();
 
 const { expect } = chai;
 
-describe('Get role', () => {
+describe('Testando as roles e validações', () => {
   let chaiHttpResponse: Response;
 
   beforeEach(async () => {
@@ -68,7 +68,7 @@ describe('Get role', () => {
        .request(app).get('/login/validate')
        .set('Authorization', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImVtYWlsIjoiYWRtaW5AYWRtaW4uY29tIiwicGFzc3dvcmQiOiJzZWNyZXRfYWRtaW4ifSwiaWF0IjoxNjY5NDY2Mzg2LCJleHAiOjE2NzAwNzExODZ9.XGT7qkREOC1ujIAo4DUbsUp39QsKLQZRc9gEQHt23rEs');
 
-    expect(chaiHttpResponse.body).to.be.deep.equal({ message: 'Invalid token' });
+    expect(chaiHttpResponse.body).to.be.deep.equal({ message: 'Token must be a valid token' });
   });
 
 });

@@ -14,7 +14,7 @@ const { app } = new App();
 
 const { expect } = chai;
 
-describe('Validation login', () => {
+describe('Testando validações de login', () => {
   let chaiHttpResponse: Response;
 
   beforeEach(async () => {
