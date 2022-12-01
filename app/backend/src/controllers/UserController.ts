@@ -6,11 +6,9 @@ export default class UserController {
   constructor(private userService: UserService) {}
 
   public async validateLogin(req: Request, res: Response): Promise<void> {
-    const { email, password } = req.body;
+    await this.userService.validateLogin(req.body);
 
-    await this.userService.validateLogin(email, password);
-
-    const token = Token.createToken({ email, password });
+    const token = Token.createToken(req.body);
 
     res.status(200).json({ token });
   }

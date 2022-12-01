@@ -1,11 +1,11 @@
 export interface IToken {
-  email: number,
+  email: string,
   password: string,
 }
 
 export interface ITokenData {
   data: {
-    email: number,
+    email: string,
     password: number,
     iat?: number,
     exp?: number,
