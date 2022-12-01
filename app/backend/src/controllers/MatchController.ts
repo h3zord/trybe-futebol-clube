@@ -39,4 +39,14 @@ export default class MatchController {
 
     return res.status(500).json({ message: 'Update error' });
   }
+
+  public async updateGoals(req: Request, res: Response): Promise<Response> {
+    const { id } = req.params;
+
+    const result = await this.matchService.updateGoals(id, req.body);
+
+    if (result) return res.status(200).json({ message: 'Finished' });
+
+    return res.status(500).json({ message: 'Update error' });
+  }
 }

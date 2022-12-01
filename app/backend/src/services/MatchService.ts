@@ -2,6 +2,7 @@ import TeamModel from '../database/models/TeamModel';
 import MatchModel from '../database/models/MatchModel';
 import ICreateMatch from '../interfaces/ICreateMatch';
 import VerifyTeams from '../validations/VerifyTeams';
+import IUpdateGoals from '../interfaces/IUpdateGoals';
 
 export default class MatchService {
   constructor(private matchModel = MatchModel, private teamModel = TeamModel) {}
@@ -46,6 +47,15 @@ export default class MatchService {
 
   public async updateProgress(id: string): Promise<number> {
     const [result] = await this.matchModel.update({ inProgress: false }, { where: { id } });
+
+    return result;
+  }
+
+  public async updateGoals(id: string, payload: IUpdateGoals): Promise<number> {
+    const { homeTeamGoals, awayTeamGoals } = payload;
+
+    const [result] = await this.matchModel
+      .update({ homeTeamGoals, awayTeamGoals }, { where: { id } });
 
     return result;
   }

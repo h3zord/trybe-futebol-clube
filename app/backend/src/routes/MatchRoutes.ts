@@ -10,25 +10,24 @@ export default class MatchRoutes {
 
   constructor() {
     this.matchRouter = Router();
-
     this.matchService = new MatchService();
     this.matchController = new MatchController(this.matchService);
 
-    this.matchRouter
-      .get('/', (req: Request, res: Response) => this.matchController
-        .findByProgress(req, res));
+    this.matchRouter.get('/', (req: Request, res: Response) => this.matchController
+      .findByProgress(req, res));
 
-    this.matchRouter
-      .post(
-        '/',
-        (req: Request, res: Response, next: NextFunction) => TokenMiddleware
-          .checkToken(req, res, next),
-        (req: Request, res: Response) => this.matchController
-          .create(req, res),
-      );
+    this.matchRouter.post(
+      '/',
+      (req: Request, res: Response, next: NextFunction) => TokenMiddleware
+        .checkToken(req, res, next),
+      (req: Request, res: Response) => this.matchController
+        .create(req, res),
+    );
 
-    this.matchRouter
-      .patch('/:id/finish', (req: Request, res: Response) => this.matchController
-        .updateProgress(req, res));
+    this.matchRouter.patch('/:id/finish', (req: Request, res: Response) => this.matchController
+      .updateProgress(req, res));
+
+    this.matchRouter.patch('/:id', (req: Request, res: Response) => this.matchController
+      .updateGoals(req, res));
   }
 }
