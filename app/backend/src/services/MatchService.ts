@@ -1,5 +1,6 @@
 import TeamModel from '../database/models/TeamModel';
 import MatchModel from '../database/models/MatchModel';
+import ICreateMatch from '../interfaces/ICreateMatch';
 
 export default class MatchService {
   constructor(private matchModel = MatchModel) {}
@@ -25,6 +26,15 @@ export default class MatchService {
         { model: TeamModel, as: 'teamAway', attributes: { exclude: ['id'] } },
       ],
     });
+
+    return result;
+  }
+
+  public async create(payload: ICreateMatch): Promise<MatchModel> {
+    const { homeTeam, awayTeam, homeTeamGoals, awayTeamGoals } = payload;
+
+    const result = await this.matchModel
+      .create({ homeTeam, awayTeam, homeTeamGoals, awayTeamGoals, inProgress: true });
 
     return result;
   }

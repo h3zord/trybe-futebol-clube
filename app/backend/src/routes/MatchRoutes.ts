@@ -1,10 +1,10 @@
-import * as express from 'express';
-import { Request, Response, Router } from 'express';
+import { Request, Response, NextFunction, Router, IRouter } from 'express';
 import MatchService from '../services/MatchService';
 import MatchController from '../controllers/MatchController';
+import TokenMiddleware from '../middlewares/TokenMiddleware';
 
 export default class MatchRoutes {
-  public matchRouter: express.IRouter;
+  public matchRouter: IRouter;
   private matchService: MatchService;
   private matchController: MatchController;
 
@@ -17,5 +17,14 @@ export default class MatchRoutes {
     this.matchRouter
       .get('/', (req: Request, res: Response) => this.matchController
         .findByProgress(req, res));
+
+    this.matchRouter
+      .post(
+        '/',
+        (req: Request, res: Response, next: NextFunction) => TokenMiddleware
+          .checkToken(req, res, next),
+        (req: Request, res: Response) => this.matchController
+          .create(req, res),
+      );
   }
 }
