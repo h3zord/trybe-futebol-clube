@@ -26,5 +26,9 @@ export default class MatchRoutes {
         (req: Request, res: Response) => this.matchController
           .create(req, res),
       );
+
+    this.matchRouter
+      .patch('/:id/finish', (req: Request, res: Response) => this.matchController
+        .updateProgress(req, res));
   }
 }

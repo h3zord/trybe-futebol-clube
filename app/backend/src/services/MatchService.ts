@@ -38,4 +38,10 @@ export default class MatchService {
 
     return result;
   }
+
+  public async updateProgress(id: string) {
+    const [result] = await this.matchModel.update({ inProgress: false }, { where: { id } });
+
+    return result;
+  }
 }

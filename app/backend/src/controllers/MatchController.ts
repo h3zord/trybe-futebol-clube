@@ -29,4 +29,14 @@ export default class MatchController {
 
     res.status(201).json(result);
   }
+
+  public async updateProgress(req: Request, res: Response): Promise<Response> {
+    const { id } = req.params;
+
+    const result = await this.matchService.updateProgress(id);
+
+    if (result) return res.status(200).json({ message: 'Finished' });
+
+    return res.status(500).json({ message: 'Update error' });
+  }
 }
