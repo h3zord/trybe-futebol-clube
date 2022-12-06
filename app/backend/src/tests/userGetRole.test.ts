@@ -36,7 +36,7 @@ describe('Testando as roles e validações', () => {
   it('Testando se retorna a role admin', async () => {
     chaiHttpResponse = await chai
        .request(app).get('/login/validate')
-       .set('Authorization', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImVtYWlsIjoiYWRtaW5AYWRtaW4uY29tIiwicGFzc3dvcmQiOiJzZWNyZXRfYWRtaW4ifSwiaWF0IjoxNjY5NDY2Mzg2LCJleHAiOjE2NzAwNzExODZ9.XGT7qkREOC1ujIAo4DUbsUp39QsKLQZRc9gEQHt23rE');
+       .set('Authorization', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImVtYWlsIjoiYWRtaW5AYWRtaW4uY29tIiwicGFzc3dvcmQiOiJzZWNyZXRfYWRtaW4ifSwiaWF0IjoxNjcwMTU2NDc0LCJleHAiOjE2NzA3NjEyNzR9.WUFcltE8UkNu18GPTyACkAus0vU9xGJbFa7VogqVoN0');
 
     expect(chaiHttpResponse.body).to.be.deep.equal({ role: 'admin' });
   });
@@ -50,7 +50,7 @@ describe('Testando as roles e validações', () => {
 
     chaiHttpResponse = await chai
     .request(app).get('/login/validate')
-    .set('Authorization', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImVtYWlsIjoiYWRtaW5AYWRtaW4uY29tIiwicGFzc3dvcmQiOiJzZWNyZXRfYWRtaW4ifSwiaWF0IjoxNjY5NDY2Mzg2LCJleHAiOjE2NzAwNzExODZ9.XGT7qkREOC1ujIAo4DUbsUp39QsKLQZRc9gEQHt23rE');
+    .set('Authorization', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImVtYWlsIjoiYWRtaW5AYWRtaW4uY29tIiwicGFzc3dvcmQiOiJzZWNyZXRfYWRtaW4ifSwiaWF0IjoxNjcwMTU2NDc0LCJleHAiOjE2NzA3NjEyNzR9.WUFcltE8UkNu18GPTyACkAus0vU9xGJbFa7VogqVoN0');
 
     expect(chaiHttpResponse.body).to.be.deep.equal({});
   });

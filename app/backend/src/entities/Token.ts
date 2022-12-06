@@ -11,7 +11,7 @@ export default class Token {
     return token;
   }
 
-  public static validateToken(token: string) {
+  public static validateToken(token: string): IToken {
     try {
       const { data } = jwt.verify(token, process.env.JWT_SECRET as string) as ITokenData;
       return data;

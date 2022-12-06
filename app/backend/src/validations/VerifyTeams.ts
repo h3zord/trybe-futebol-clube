@@ -4,7 +4,7 @@ import HttpException from '../utils/HttpException';
 export default class VerifyTeams {
   constructor(private team1: number, private team2: number) {}
 
-  public async validateTeams() {
+  public async validateTeams(): Promise <void> {
     if (this.team1 === this.team2) {
       throw new HttpException(422, 'It is not possible to create a match with two equal teams');
     }

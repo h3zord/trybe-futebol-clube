@@ -4,12 +4,14 @@ import ErrorMiddleware from './middlewares/ErrorMiddleware';
 import LoginRoutes from './routes/LoginRoutes';
 import TeamRoutes from './routes/TeamRoutes';
 import MatchRoutes from './routes/MatchRoutes';
+import LeaderBoardRoutes from './routes/LeaderBoardRoutes';
 
 class App {
   public app: express.Express;
   private loginRoutes: LoginRoutes;
   private teamRoutes: TeamRoutes;
   private matchRoutes: MatchRoutes;
+  private leaderBoardRoutes: LeaderBoardRoutes;
 
   constructor() {
     this.app = express();
@@ -17,6 +19,7 @@ class App {
     this.loginRoutes = new LoginRoutes();
     this.teamRoutes = new TeamRoutes();
     this.matchRoutes = new MatchRoutes();
+    this.leaderBoardRoutes = new LeaderBoardRoutes();
 
     this.config();
 
@@ -38,6 +41,7 @@ class App {
     this.app.use('/login', this.loginRoutes.loginRouter);
     this.app.use('/teams', this.teamRoutes.teamRouter);
     this.app.use('/matches', this.matchRoutes.matchRouter);
+    this.app.use('/leaderboard', this.leaderBoardRoutes.leaderBoardRouter);
 
     this.app.use(ErrorMiddleware.catchError);
   }

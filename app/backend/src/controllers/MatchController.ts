@@ -24,10 +24,10 @@ export default class MatchController {
     return res.status(200).json(result);
   }
 
-  public async create(req: Request, res: Response): Promise<void> {
+  public async create(req: Request, res: Response): Promise<Response> {
     const result = await this.matchService.create(req.body);
 
-    res.status(201).json(result);
+    return res.status(201).json(result);
   }
 
   public async updateProgress(req: Request, res: Response): Promise<Response> {

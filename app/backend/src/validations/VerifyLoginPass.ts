@@ -6,7 +6,7 @@ export default class VerifyPassword {
   constructor(private user: IUser, private requestPassword: string) {
   }
 
-  public validatePassword() {
+  public validatePassword(): void {
     const checkPass = bcrypt.compareSync(this.requestPassword, this.user.password);
 
     if (!checkPass) throw new HttpException(401, 'Incorrect email or password');
