@@ -99,8 +99,8 @@ export default class LeaderBoard {
   }
 
   private finishingBoard(team: TeamModel, index: number): void {
-    const { homeGoals } = this.checkHomeOrAway(index);
-    const { awayGoals } = this.checkHomeOrAway(index);
+    const { homeGoals, awayGoals } = this.checkHomeOrAway(index);
+    // const { awayGoals } = this.checkHomeOrAway(index);
     this.board.name = team.teamName;
     this.matchGoals(homeGoals, awayGoals);
     this.matchResult(homeGoals, awayGoals);

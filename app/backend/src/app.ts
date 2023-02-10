@@ -38,7 +38,7 @@ class App {
     this.app.use(express.json());
     this.app.use(accessControl);
 
-    this.app.use('/login', this.loginRoutes.loginRouter);
+    this.app.use('/login', this.loginRoutes.loginRouter); 
     this.app.use('/teams', this.teamRoutes.teamRouter);
     this.app.use('/matches', this.matchRoutes.matchRouter);
     this.app.use('/leaderboard', this.leaderBoardRoutes.leaderBoardRouter);

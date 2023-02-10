@@ -65,7 +65,7 @@ describe('Testando os matches', () => {
     chaiHttpResponse = await chai
       .request(app).post('/matches')
       .send(createdMatch)
-      .set('Authorization', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImVtYWlsIjoiYWRtaW5AYWRtaW4uY29tIiwicGFzc3dvcmQiOiJzZWNyZXRfYWRtaW4ifSwiaWF0IjoxNjcwMTU2NDc0LCJleHAiOjE2NzA3NjEyNzR9.WUFcltE8UkNu18GPTyACkAus0vU9xGJbFa7VogqVoN0');
+      .set('Authorization', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImVtYWlsIjoiYWRtaW5AYWRtaW4uY29tIiwicGFzc3dvcmQiOiJzZWNyZXRfYWRtaW4ifSwiaWF0IjoxNjc1OTczNTcyLCJleHAiOjE2NzY1NzgzNzJ9.ABaMMlo3PuNHABoagFN0-enlJH3J1MhGvjyt4wrgh6A');
     
     expect(chaiHttpResponse.body).to.be.deep.equal(createdMatch);
   })
@@ -80,7 +80,7 @@ describe('Testando os matches', () => {
     chaiHttpResponse = await chai
       .request(app).post('/matches')
       .send(sameTeams)
-      .set('Authorization', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImVtYWlsIjoiYWRtaW5AYWRtaW4uY29tIiwicGFzc3dvcmQiOiJzZWNyZXRfYWRtaW4ifSwiaWF0IjoxNjcwMTU2NDc0LCJleHAiOjE2NzA3NjEyNzR9.WUFcltE8UkNu18GPTyACkAus0vU9xGJbFa7VogqVoN0');
+      .set('Authorization', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImVtYWlsIjoiYWRtaW5AYWRtaW4uY29tIiwicGFzc3dvcmQiOiJzZWNyZXRfYWRtaW4ifSwiaWF0IjoxNjc1OTczNTcyLCJleHAiOjE2NzY1NzgzNzJ9.ABaMMlo3PuNHABoagFN0-enlJH3J1MhGvjyt4wrgh6A');
     
     expect(chaiHttpResponse.body).to.be.deep.equal({ message: "It is not possible to create a match with two equal teams" });
   })
@@ -95,7 +95,7 @@ describe('Testando os matches', () => {
     chaiHttpResponse = await chai
       .request(app).post('/matches')
       .send(unknownTeam)
-      .set('Authorization', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImVtYWlsIjoiYWRtaW5AYWRtaW4uY29tIiwicGFzc3dvcmQiOiJzZWNyZXRfYWRtaW4ifSwiaWF0IjoxNjcwMTU2NDc0LCJleHAiOjE2NzA3NjEyNzR9.WUFcltE8UkNu18GPTyACkAus0vU9xGJbFa7VogqVoN0');
+      .set('Authorization', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImVtYWlsIjoiYWRtaW5AYWRtaW4uY29tIiwicGFzc3dvcmQiOiJzZWNyZXRfYWRtaW4ifSwiaWF0IjoxNjc1OTczNTcyLCJleHAiOjE2NzY1NzgzNzJ9.ABaMMlo3PuNHABoagFN0-enlJH3J1MhGvjyt4wrgh6A');
     
     expect(chaiHttpResponse.body).to.be.deep.equal({ message: "There is no team with such id!" });
   })

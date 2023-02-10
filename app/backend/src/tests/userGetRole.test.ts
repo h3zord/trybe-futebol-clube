@@ -29,14 +29,14 @@ describe('Testando as roles e validações', () => {
       } as UserModel);
   });
 
-  afterEach(()=>{
+  afterEach(()=> {
     (UserModel.findOne as sinon.SinonStub).restore();
   })
 
   it('Testando se retorna a role admin', async () => {
     chaiHttpResponse = await chai
        .request(app).get('/login/validate')
-       .set('Authorization', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImVtYWlsIjoiYWRtaW5AYWRtaW4uY29tIiwicGFzc3dvcmQiOiJzZWNyZXRfYWRtaW4ifSwiaWF0IjoxNjcwMTU2NDc0LCJleHAiOjE2NzA3NjEyNzR9.WUFcltE8UkNu18GPTyACkAus0vU9xGJbFa7VogqVoN0');
+       .set('Authorization', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImVtYWlsIjoiYWRtaW5AYWRtaW4uY29tIiwicGFzc3dvcmQiOiJzZWNyZXRfYWRtaW4ifSwiaWF0IjoxNjc1OTczNTcyLCJleHAiOjE2NzY1NzgzNzJ9.ABaMMlo3PuNHABoagFN0-enlJH3J1MhGvjyt4wrgh6A');       
 
     expect(chaiHttpResponse.body).to.be.deep.equal({ role: 'admin' });
   });
@@ -50,7 +50,7 @@ describe('Testando as roles e validações', () => {
 
     chaiHttpResponse = await chai
     .request(app).get('/login/validate')
-    .set('Authorization', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImVtYWlsIjoiYWRtaW5AYWRtaW4uY29tIiwicGFzc3dvcmQiOiJzZWNyZXRfYWRtaW4ifSwiaWF0IjoxNjcwMTU2NDc0LCJleHAiOjE2NzA3NjEyNzR9.WUFcltE8UkNu18GPTyACkAus0vU9xGJbFa7VogqVoN0');
+    .set('Authorization', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImVtYWlsIjoiYWRtaW5AYWRtaW4uY29tIiwicGFzc3dvcmQiOiJzZWNyZXRfYWRtaW4ifSwiaWF0IjoxNjc1OTczNTcyLCJleHAiOjE2NzY1NzgzNzJ9.ABaMMlo3PuNHABoagFN0-enlJH3J1MhGvjyt4wrgh6A');
 
     expect(chaiHttpResponse.body).to.be.deep.equal({});
   });

@@ -21,21 +21,6 @@ const { expect } = chai;
 describe('Testando os leaderBoards', () => {
   let chaiHttpResponse: Response;
 
-  // beforeEach(async () => {
-  //   sinon
-  //     .stub(TeamModel, "findAll")
-  //     .resolves(teamsMock as TeamModel[])
-
-  //   sinon
-  //     .stub(MatchModel, "findAll")
-  //     .resolves(progressFalse as unknown as MatchModel[]);
-  // });
-
-  // afterEach(()=>{
-  //   (TeamModel.findOne as sinon.SinonStub).restore();
-  //   (MatchModel.findOne as sinon.SinonStub).restore();
-  // })
-
   it('Testando se retorna corretamente o leaderBoard away', async () => {
     chaiHttpResponse = await chai
       .request(app).get('/leaderboard/away');
