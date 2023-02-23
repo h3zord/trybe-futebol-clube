@@ -217,7 +217,7 @@
           }
         ],
         "responses": {
-          "200": {
+          "201": {
             "schema": {
               "$ref": "#/definitions/Match"
             },
