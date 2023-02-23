@@ -13,7 +13,7 @@ export default class VerifyTeams {
     const findSecondTeam = await TeamModel.findByPk(this.team2);
 
     if (!findFirstTeam || !findSecondTeam) {
-      throw new HttpException(404, 'There is no team with such id!');
+      throw new HttpException(400, 'There is no team with such id!');
     }
   }
 }

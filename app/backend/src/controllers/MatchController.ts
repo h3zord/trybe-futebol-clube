@@ -1,4 +1,5 @@
 import { Request, Response } from 'express';
+import HttpException from '../utils/HttpException';
 import MatchService from '../services/MatchService';
 
 export default class MatchController {
@@ -25,6 +26,8 @@ export default class MatchController {
   }
 
   public async create(req: Request, res: Response): Promise<Response> {
+    if (!Object.keys(req.body).length) throw new HttpException(404, 'Body not found');
+
     const result = await this.matchService.create(req.body);
 
     return res.status(201).json(result);
@@ -42,6 +45,8 @@ export default class MatchController {
 
   public async updateGoals(req: Request, res: Response): Promise<Response> {
     const { id } = req.params;
+
+    if (!Object.keys(req.body).length) throw new HttpException(404, 'Body not found');
 
     const result = await this.matchService.updateGoals(id, req.body);
 

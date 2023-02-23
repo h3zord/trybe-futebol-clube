@@ -1,2 +1,5 @@
 joi
 express-async-errors
+@types/swagger-ui-express
+swagger-autogen
+swagger-ui-express

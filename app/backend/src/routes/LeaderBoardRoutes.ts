@@ -12,6 +12,7 @@ export default class LeaderBoardRoutes {
   private leaderBoardHomeController: LeaderBoardController;
   private leaderBoardAwayController : LeaderBoardController;
 
+  // eslint-disable-next-line max-lines-per-function
   constructor() {
     this.leaderBoardRouter = Router();
 
@@ -22,16 +23,50 @@ export default class LeaderBoardRoutes {
     this.leaderBoardHomeController = new LeaderBoardController(this.leaderBoardHomeService);
     this.leaderBoardAwayController = new LeaderBoardController(this.leaderBoardAwayService);
 
-    this.leaderBoardRouter
-      .get('/', (req: Request, res: Response) => this.leaderBoardController
-        .createLeaderBoard(req, res));
+    this.leaderBoardRouter.get(
+      '/leaderboard',
+      (req: Request, res: Response) => this.leaderBoardController
+        .createLeaderBoard(req, res)
 
-    this.leaderBoardRouter
-      .get('/home', (req: Request, res: Response) => this.leaderBoardHomeController
-        .createLeaderBoard(req, res));
+      // #swagger.tags = ['LeaderBoards']
+      // #swagger.summary = 'Lista a classificação geral do campeonato'
+      // #swagger.description = 'Endpoint para listar a classificação geral do campeonato de acordo com as partidas cadastradas no banco de dados.'
 
-    this.leaderBoardRouter
-      .get('/away', (req: Request, res: Response) => this.leaderBoardAwayController
-        .createLeaderBoard(req, res));
+      /* #swagger.responses[200] = {
+        schema: { $ref: "#/definitions/LeaderBoard" },
+        description: 'Requisição para listar a classificação geral do campeonato efetuada com sucesso!'
+      } */
+      ,
+    );
+
+    this.leaderBoardRouter.get(
+      '/leaderboard/home',
+      (req: Request, res: Response) => this.leaderBoardHomeController
+        .createLeaderBoard(req, res)
+
+      // #swagger.tags = ['LeaderBoards']
+      // #swagger.summary = 'Lista a classificação dos times como mandante no campeonato'
+      // #swagger.description = 'Endpoint para listar a classificação dos times como mandante no campeonato de acordo com as partidas cadastradas no banco de dados.'
+
+      /* #swagger.responses[200] = {
+        schema: { $ref: "#/definitions/LeaderBoardHome" },
+        description: 'Requisição para listar a classificação dos times como mandante no campeonato efetuada com sucesso!'
+      } */,
+    );
+
+    this.leaderBoardRouter.get(
+      '/leaderboard/away',
+      (req: Request, res: Response) => this.leaderBoardAwayController
+        .createLeaderBoard(req, res)
+
+      // #swagger.tags = ['LeaderBoards']
+      // #swagger.summary = 'Lista a classificação dos times como visitante no campeonato'
+      // #swagger.description = 'Endpoint para listar a classificação dos times como visitante no campeonato de acordo com as partidas cadastradas no banco de dados.'
+
+      /* #swagger.responses[200] = {
+        schema: { $ref: "#/definitions/LeaderBoardAway" },
+        description: 'Requisição para listar a classificação dos times como visitante no campeonato efetuada com sucesso!'
+      } */,
+    );
   }
 }

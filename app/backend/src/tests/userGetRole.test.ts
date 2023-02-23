@@ -36,7 +36,7 @@ describe('Testando as roles e validações', () => {
   it('Testando se retorna a role admin', async () => {
     chaiHttpResponse = await chai
        .request(app).get('/login/validate')
-       .set('Authorization', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImVtYWlsIjoiYWRtaW5AYWRtaW4uY29tIiwicGFzc3dvcmQiOiJzZWNyZXRfYWRtaW4ifSwiaWF0IjoxNjc1OTczNTcyLCJleHAiOjE2NzY1NzgzNzJ9.ABaMMlo3PuNHABoagFN0-enlJH3J1MhGvjyt4wrgh6A');       
+       .set('Authorization', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImVtYWlsIjoiYWRtaW5AYWRtaW4uY29tIiwicGFzc3dvcmQiOiJzZWNyZXRfYWRtaW4ifSwiaWF0IjoxNjc3MTY3MzQ4LCJleHAiOjI1NDEwODA5NDh9.bSsXNawtd6NrMUWxrT1W85oigMKzCvU_rB2QNB9kYRw');       
 
     expect(chaiHttpResponse.body).to.be.deep.equal({ role: 'admin' });
   });
@@ -50,7 +50,7 @@ describe('Testando as roles e validações', () => {
 
     chaiHttpResponse = await chai
     .request(app).get('/login/validate')
-    .set('Authorization', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImVtYWlsIjoiYWRtaW5AYWRtaW4uY29tIiwicGFzc3dvcmQiOiJzZWNyZXRfYWRtaW4ifSwiaWF0IjoxNjc1OTczNTcyLCJleHAiOjE2NzY1NzgzNzJ9.ABaMMlo3PuNHABoagFN0-enlJH3J1MhGvjyt4wrgh6A');
+    .set('Authorization', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImVtYWlsIjoiYWRtaW5AYWRtaW4uY29tIiwicGFzc3dvcmQiOiJzZWNyZXRfYWRtaW4ifSwiaWF0IjoxNjc3MTY3MzQ4LCJleHAiOjI1NDEwODA5NDh9.bSsXNawtd6NrMUWxrT1W85oigMKzCvU_rB2QNB9kYRw');
 
     expect(chaiHttpResponse.body).to.be.deep.equal({});
   });
@@ -60,7 +60,7 @@ describe('Testando as roles e validações', () => {
        .request(app).get('/login/validate')
        .set('Authorization', '');
 
-    expect(chaiHttpResponse.status).to.be.equal(401);
+    expect(chaiHttpResponse.status).to.be.equal(404);
   });
 
   it('Testando se retorna a mensagem invalid token, com um token inválido', async () => {

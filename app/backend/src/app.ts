@@ -1,5 +1,7 @@
 import * as express from 'express';
 import 'express-async-errors';
+import * as swaggerUi from 'swagger-ui-express';
+import * as swaggerDocument from './swagger-output.json';
 import ErrorMiddleware from './middlewares/ErrorMiddleware';
 import LoginRoutes from './routes/LoginRoutes';
 import TeamRoutes from './routes/TeamRoutes';
@@ -38,10 +40,11 @@ class App {
     this.app.use(express.json());
     this.app.use(accessControl);
 
-    this.app.use('/login', this.loginRoutes.loginRouter); 
-    this.app.use('/teams', this.teamRoutes.teamRouter);
-    this.app.use('/matches', this.matchRoutes.matchRouter);
-    this.app.use('/leaderboard', this.leaderBoardRoutes.leaderBoardRouter);
+    this.app.use(this.loginRoutes.loginRouter);
+    this.app.use(this.teamRoutes.teamRouter);
+    this.app.use(this.matchRoutes.matchRouter);
+    this.app.use(this.leaderBoardRoutes.leaderBoardRouter);
+    this.app.use('/doc', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
     this.app.use(ErrorMiddleware.catchError);
   }

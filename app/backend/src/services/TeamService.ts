@@ -1,3 +1,4 @@
+import HttpException from '../utils/HttpException';
 import TeamModel from '../database/models/TeamModel';
 
 export default class TeamService {
@@ -11,6 +12,8 @@ export default class TeamService {
 
   public async findById(id: string): Promise<TeamModel | null> {
     const result = await this.teamModel.findByPk(id);
+
+    if (!result) throw new HttpException(400, 'There is no team with such id!');
 
     return result;
   }
