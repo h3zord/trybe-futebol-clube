@@ -6,7 +6,7 @@ const doc = {
     title: 'Trybe Futebol Clube API',
     description: 'Esta documentação é destinada ao projeto Trybe Futebol Clube.',
   },
-  host: 'back-end-production-1a4a.up.railway.app',
+  host: 'trybe-fc.up.railway.app',
   basePath: '/',
   schemes: ['https', 'http'],
   consumes: ['application/json'],
