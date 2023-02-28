@@ -10,7 +10,7 @@ class TeamRoutes {
         this.teamController = new TeamController_1.default(this.teamService);
         this.teamRouter.get('/teams', (req, res) => this.teamController
             .getAll(req, res)
-        // #swagger.tags = ['Teams']
+        // #swagger.tags = ['Team']
         // #swagger.summary = 'Listar todos os times'
         // #swagger.description = 'Endpoint para listar todos os times cadastrados no banco de dados.'
         /* #swagger.responses[200] = {
@@ -19,7 +19,7 @@ class TeamRoutes {
         } */ );
         this.teamRouter.get('/teams/:id', (req, res) => this.teamController
             .findById(req, res)
-        // #swagger.tags = ['Teams']
+        // #swagger.tags = ['Team']
         // #swagger.summary = 'Buscar um time pelo seu ID'
         // #swagger.description = 'Endpoint para buscar um time cadastrado no banco de dados pelo seu ID.'
         /* #swagger.parameters['id'] = {

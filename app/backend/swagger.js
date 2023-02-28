@@ -3,10 +3,10 @@ const swaggerAutogen = require('swagger-autogen')();
 const doc = {
   info: {
     version: '1.0.0',
-    title: 'API Trybe Futebol Clube',
+    title: 'Trybe Futebol Clube API',
     description: 'Esta documentação é destinada ao projeto Trybe Futebol Clube.',
   },
-  host: 'localhost:3001',
+  host: 'localhost:3000',
   basePath: '/',
   schemes: ['http'],
   consumes: ['application/json'],
@@ -17,15 +17,15 @@ const doc = {
       description: 'Endpoints',
     },
     {
-      name: 'Teams',
+      name: 'Team',
       description: 'Endpoints',
     },
     {
-      name: 'Matches',
+      name: 'Match',
       description: 'Endpoints',
     },
     {
-      name: 'LeaderBoards',
+      name: 'LeaderBoard',
       description: 'Endpoints',
     },
   ],
@@ -152,7 +152,7 @@ const doc = {
   },
 };
 
-const outputFile = './swagger-output.json';
+const outputFile = './src/swagger-output.json';
 const endpointsFiles = [
   './build/routes/LoginRoutes.js',
   './build/routes/TeamRoutes.js',
@@ -162,5 +162,5 @@ const endpointsFiles = [
 
 swaggerAutogen(outputFile, endpointsFiles, doc).then(async () => {
   // eslint-disable-next-line import/extensions
-  await import('../build/app.js'); // Your project's root file
+  await import('./build/app.js'); // Your project's root file
 });

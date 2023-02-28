@@ -6,7 +6,7 @@
   "scripts": {
     "build": "/bin/sh tsc_eval.sh",
     "test": "mocha -r ts-node/register ./src/tests/*$NAME*.{test,spec}.ts -t 10000 --exit",
-    "start:prod": "tsc && node ./src/swagger.js && node ./build/server.js",
+    "start:prod": "tsc && node ./swagger.js && node ./build/server.js",
     "test:coverage": "npm run db:reset && nyc npm run test",
     "test:coverage:json": "nyc --reporter=json-summary npm run test",
     "db:reset": "npx sequelize-cli db:drop && npx sequelize-cli db:create && npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all",
@@ -65,6 +65,6 @@
     "mysql2": "2.3.3",
     "sequelize": "6.25.5",
     "swagger-autogen": "^2.23.1",
-    "swagger-ui-express": "^4.6.1"
+    "swagger-ui-express": "^4.6.2"
   }
 }

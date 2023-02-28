@@ -15,7 +15,7 @@ class LeaderBoardRoutes {
         this.leaderBoardAwayController = new LeaderBoardController_1.default(this.leaderBoardAwayService);
         this.leaderBoardRouter.get('/leaderboard', (req, res) => this.leaderBoardController
             .createLeaderBoard(req, res)
-        // #swagger.tags = ['LeaderBoards']
+        // #swagger.tags = ['LeaderBoard']
         // #swagger.summary = 'Lista a classificação geral do campeonato'
         // #swagger.description = 'Endpoint para listar a classificação geral do campeonato de acordo com as partidas cadastradas no banco de dados.'
         /* #swagger.responses[200] = {
@@ -25,7 +25,7 @@ class LeaderBoardRoutes {
         );
         this.leaderBoardRouter.get('/leaderboard/home', (req, res) => this.leaderBoardHomeController
             .createLeaderBoard(req, res)
-        // #swagger.tags = ['LeaderBoards']
+        // #swagger.tags = ['LeaderBoard']
         // #swagger.summary = 'Lista a classificação dos times como mandante no campeonato'
         // #swagger.description = 'Endpoint para listar a classificação dos times como mandante no campeonato de acordo com as partidas cadastradas no banco de dados.'
         /* #swagger.responses[200] = {
@@ -34,7 +34,7 @@ class LeaderBoardRoutes {
         } */ );
         this.leaderBoardRouter.get('/leaderboard/away', (req, res) => this.leaderBoardAwayController
             .createLeaderBoard(req, res)
-        // #swagger.tags = ['LeaderBoards']
+        // #swagger.tags = ['LeaderBoard']
         // #swagger.summary = 'Lista a classificação dos times como visitante no campeonato'
         // #swagger.description = 'Endpoint para listar a classificação dos times como visitante no campeonato de acordo com as partidas cadastradas no banco de dados.'
         /* #swagger.responses[200] = {

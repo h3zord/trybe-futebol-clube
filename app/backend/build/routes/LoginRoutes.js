@@ -11,9 +11,9 @@ class LoginRoutes {
         this.loginRouter.post('/login', (req, res) => this.userController
             .validateLogin(req, res)
         // #swagger.tags = ['Login']
-        // #swagger.summary = 'Realizar o login com email e senha e gerar um token'
+        // #swagger.summary = 'Realizar o login com email e senha e em seguida gerar um token'
         // #swagger.description = 'Endpoint para consultar se o email e a senha fornecidos coincidem com os cadastrados no banco de dados.'
-        /* #swagger.parameters['INFO'] = {
+        /* #swagger.parameters['info'] = {
           in: 'body',
           description: 'Informações necessárias para realizar o login.',
           type: 'object',
@@ -40,7 +40,7 @@ class LoginRoutes {
         // #swagger.tags = ['Login']
         // #swagger.summary = 'Verificar qual é o tipo de usuário'
         // #swagger.description = 'Endpoint para verificar se o token fornecido é válido e retornar qual o tipo de usuário logado.',
-        /* #swagger.parameters['Authorization'] = {
+        /* #swagger.parameters['authorization'] = {
           in: 'header',
           description: 'Token necessário para verificar qual o tipo de usuário está logado.',
           type: 'string',
@@ -55,7 +55,7 @@ class LoginRoutes {
           description: 'Erro! A requisição falhou! O token fornecido é inválido.'
         } */
         /* #swagger.responses[404] = {
-          schema: { $ref: "#/definitions/BodyNotFoundError" },
+          schema: { $ref: "#/definitions/TokenNotFoundError" },
           description: 'Erro! A requisição falhou! O token não foi encontrado.'
         } */ );
     }

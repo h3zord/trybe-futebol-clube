@@ -2,10 +2,10 @@
     "swagger": "2.0",
     "info": {
         "version": "1.0.0",
-        "title": "API Trybe Futebol Clube",
+        "title": "Trybe Futebol Clube API",
         "description": "Esta documentação é destinada ao projeto Trybe Futebol Clube."
     },
-    "host": "localhost:3001",
+    "host": "localhost:3000",
     "basePath": "/",
     "tags": [
         {
@@ -13,15 +13,15 @@
             "description": "Endpoints"
         },
         {
-            "name": "Teams",
+            "name": "Team",
             "description": "Endpoints"
         },
         {
-            "name": "Matches",
+            "name": "Match",
             "description": "Endpoints"
         },
         {
-            "name": "LeaderBoards",
+            "name": "LeaderBoard",
             "description": "Endpoints"
         }
     ],
@@ -40,11 +40,11 @@
                 "tags": [
                     "Login"
                 ],
-                "summary": "Realizar o login com email e senha e gerar um token",
+                "summary": "Realizar o login com email e senha e em seguida gerar um token",
                 "description": "Endpoint para consultar se o email e a senha fornecidos coincidem com os cadastrados no banco de dados.",
                 "parameters": [
                     {
-                        "name": "INFO",
+                        "name": "info",
                         "in": "body",
                         "description": "Informações necessárias para realizar o login.",
                         "schema": {
@@ -89,7 +89,7 @@
                 "description": "Endpoint para verificar se o token fornecido é válido e retornar qual o tipo de usuário logado.",
                 "parameters": [
                     {
-                        "name": "Authorization",
+                        "name": "authorization",
                         "in": "header",
                         "description": "Token necessário para verificar qual o tipo de usuário está logado.",
                         "type": "string",
@@ -111,7 +111,7 @@
                     },
                     "404": {
                         "schema": {
-                            "$ref": "#/definitions/BodyNotFoundError"
+                            "$ref": "#/definitions/TokenNotFoundError"
                         },
                         "description": "Erro! A requisição falhou! O token não foi encontrado."
                     }
@@ -121,7 +121,7 @@
         "/teams": {
             "get": {
                 "tags": [
-                    "Teams"
+                    "Team"
                 ],
                 "summary": "Listar todos os times",
                 "description": "Endpoint para listar todos os times cadastrados no banco de dados.",
@@ -139,7 +139,7 @@
         "/teams/{id}": {
             "get": {
                 "tags": [
-                    "Teams"
+                    "Team"
                 ],
                 "summary": "Buscar um time pelo seu ID",
                 "description": "Endpoint para buscar um time cadastrado no banco de dados pelo seu ID.",
@@ -169,51 +169,27 @@
             }
         },
         "/matches": {
-            "get": {
-                "tags": [
-                    "Matches"
-                ],
-                "summary": "Listar todas as partidas, apenas as finalizadas ou que estão em andamento",
-                "description": "Endpoint para listar todos as partidas cadastradas no banco de dados, com a opção de filtrar apenas as finalizadas, ou somente as partidas em andamento.",
-                "parameters": [
-                    {
-                        "name": "inProgress",
-                        "in": "query",
-                        "type": "string",
-                        "example": "true or false",
-                        "description": "Query opcional para filtrar as partidas por progresso. TRUE retorna as partidas em andamento, FALSE retorna as partidas já finalizadas."
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "schema": {
-                            "$ref": "#/definitions/Matches"
-                        },
-                        "description": "Requisição para listar as partidas cadastradas no banco de dados efetuada com sucesso!"
-                    }
-                }
-            },
             "post": {
                 "tags": [
-                    "Matches"
+                    "Match"
                 ],
                 "summary": "Criar uma nova partida",
                 "description": "Endpoint para cadastrar uma nova partida no banco de dados.",
                 "parameters": [
                     {
-                        "name": "INFO",
+                        "name": "authorization",
+                        "in": "header",
+                        "description": "Token necessário para criar uma nova partida.",
+                        "type": "string",
+                        "default": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImVtYWlsIjoiYWRtaW5AYWRtaW4uY29tIiwicGFzc3dvcmQiOiJzZWNyZXRfYWRtaW4ifSwiaWF0IjoxNjc3MDI4Njg3LCJleHAiOjE3NjMzNDIyODd9.7hkBkM1PUqUZ1rmmLMqCfIryM4qWPfgT_3XFU3khFrk"
+                    },
+                    {
+                        "name": "info",
                         "in": "body",
                         "description": "Informações necessárias para criar uma nova partida.",
                         "schema": {
                             "$ref": "#/definitions/Match"
                         }
-                    },
-                    {
-                        "name": "Authorization",
-                        "in": "header",
-                        "description": "Token necessário para criar uma nova partida.",
-                        "type": "string",
-                        "default": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImVtYWlsIjoiYWRtaW5AYWRtaW4uY29tIiwicGFzc3dvcmQiOiJzZWNyZXRfYWRtaW4ifSwiaWF0IjoxNjc3MDI4Njg3LCJleHAiOjE3NjMzNDIyODd9.7hkBkM1PUqUZ1rmmLMqCfIryM4qWPfgT_3XFU3khFrk"
                     }
                 ],
                 "responses": {
@@ -254,12 +230,36 @@
                         "description": "Erro! A requisição falhou! Verifique se as informações do body não estão ausentes ou incorretas."
                     }
                 }
+            },
+            "get": {
+                "tags": [
+                    "Match"
+                ],
+                "summary": "Listar todas as partidas, apenas as finalizadas ou que estão em andamento",
+                "description": "Endpoint para listar todos as partidas cadastradas no banco de dados, com a opção de filtrar apenas as finalizadas, ou somente as partidas em andamento.",
+                "parameters": [
+                    {
+                        "name": "inProgress",
+                        "in": "query",
+                        "type": "string",
+                        "example": "true or false",
+                        "description": "Query opcional para filtrar as partidas por progresso. TRUE retorna as partidas em andamento, FALSE retorna as partidas já finalizadas."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "schema": {
+                            "$ref": "#/definitions/Matches"
+                        },
+                        "description": "Requisição para listar as partidas cadastradas no banco de dados efetuada com sucesso!"
+                    }
+                }
             }
         },
         "/matches/{id}/finish": {
             "patch": {
                 "tags": [
-                    "Matches"
+                    "Match"
                 ],
                 "summary": "Atualiza o status de uma partida em andamento para finalizada",
                 "description": "Endpoint para atualizar o status de uma partida cadastrada no banco de dados para finalizada.",
@@ -290,7 +290,7 @@
         "/matches/{id}": {
             "patch": {
                 "tags": [
-                    "Matches"
+                    "Match"
                 ],
                 "summary": "Atualiza o placar da partida",
                 "description": "Endpoint para atualizar o placar de uma partida cadastrada no banco de dados.",
@@ -303,7 +303,7 @@
                         "description": "ID necessário para buscar a partida cadastrada no banco de dados."
                     },
                     {
-                        "name": "INFO",
+                        "name": "info",
                         "in": "body",
                         "description": "Informações necessárias para atualizar o placar de uma partida.",
                         "schema": {
@@ -330,7 +330,7 @@
         "/leaderboard": {
             "get": {
                 "tags": [
-                    "LeaderBoards"
+                    "LeaderBoard"
                 ],
                 "summary": "Lista a classificação geral do campeonato",
                 "description": "Endpoint para listar a classificação geral do campeonato de acordo com as partidas cadastradas no banco de dados.",
@@ -348,7 +348,7 @@
         "/leaderboard/home": {
             "get": {
                 "tags": [
-                    "LeaderBoards"
+                    "LeaderBoard"
                 ],
                 "summary": "Lista a classificação dos times como mandante no campeonato",
                 "description": "Endpoint para listar a classificação dos times como mandante no campeonato de acordo com as partidas cadastradas no banco de dados.",
@@ -366,7 +366,7 @@
         "/leaderboard/away": {
             "get": {
                 "tags": [
-                    "LeaderBoards"
+                    "LeaderBoard"
                 ],
                 "summary": "Lista a classificação dos times como visitante no campeonato",
                 "description": "Endpoint para listar a classificação dos times como visitante no campeonato de acordo com as partidas cadastradas no banco de dados.",

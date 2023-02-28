@@ -28,7 +28,7 @@ export default class LeaderBoardRoutes {
       (req: Request, res: Response) => this.leaderBoardController
         .createLeaderBoard(req, res)
 
-      // #swagger.tags = ['LeaderBoards']
+      // #swagger.tags = ['LeaderBoard']
       // #swagger.summary = 'Lista a classificação geral do campeonato'
       // #swagger.description = 'Endpoint para listar a classificação geral do campeonato de acordo com as partidas cadastradas no banco de dados.'
 
@@ -44,7 +44,7 @@ export default class LeaderBoardRoutes {
       (req: Request, res: Response) => this.leaderBoardHomeController
         .createLeaderBoard(req, res)
 
-      // #swagger.tags = ['LeaderBoards']
+      // #swagger.tags = ['LeaderBoard']
       // #swagger.summary = 'Lista a classificação dos times como mandante no campeonato'
       // #swagger.description = 'Endpoint para listar a classificação dos times como mandante no campeonato de acordo com as partidas cadastradas no banco de dados.'
 
@@ -59,7 +59,7 @@ export default class LeaderBoardRoutes {
       (req: Request, res: Response) => this.leaderBoardAwayController
         .createLeaderBoard(req, res)
 
-      // #swagger.tags = ['LeaderBoards']
+      // #swagger.tags = ['LeaderBoard']
       // #swagger.summary = 'Lista a classificação dos times como visitante no campeonato'
       // #swagger.description = 'Endpoint para listar a classificação dos times como visitante no campeonato de acordo com as partidas cadastradas no banco de dados.'
 

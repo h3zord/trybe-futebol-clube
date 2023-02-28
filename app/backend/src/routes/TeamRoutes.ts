@@ -19,7 +19,7 @@ export default class TeamRoutes {
       (req: Request, res: Response) => this.teamController
         .getAll(req, res)
 
-      // #swagger.tags = ['Teams']
+      // #swagger.tags = ['Team']
       // #swagger.summary = 'Listar todos os times'
       // #swagger.description = 'Endpoint para listar todos os times cadastrados no banco de dados.'
 
@@ -34,7 +34,7 @@ export default class TeamRoutes {
       (req: Request, res: Response) => this.teamController
         .findById(req, res)
 
-      // #swagger.tags = ['Teams']
+      // #swagger.tags = ['Team']
       // #swagger.summary = 'Buscar um time pelo seu ID'
       // #swagger.description = 'Endpoint para buscar um time cadastrado no banco de dados pelo seu ID.'
 
