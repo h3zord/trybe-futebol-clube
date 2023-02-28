@@ -9,7 +9,7 @@ const doc = {
   },
   host: `${process.env.MYSQLHOST}:${process.env.PORT}`,
   basePath: '/',
-  schemes: ['http'],
+  schemes: ['http', 'https'],
   consumes: ['application/json'],
   produces: ['application/json'],
   tags: [
