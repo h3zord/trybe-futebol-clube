@@ -8,7 +8,7 @@ const doc = {
   },
   host: 'back-end-production-1a4a.up.railway.app',
   basePath: '/',
-  schemes: ['https'],
+  schemes: ['https', 'http'],
   consumes: ['application/json'],
   produces: ['application/json'],
   tags: [
