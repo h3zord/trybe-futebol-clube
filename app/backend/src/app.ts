@@ -1,5 +1,6 @@
-import * as express from 'express';
+import express from 'express';
 import 'express-async-errors';
+import cors from 'cors';
 import * as swaggerUi from 'swagger-ui-express';
 import * as swaggerDocument from './swagger-output.json';
 import ErrorMiddleware from './middlewares/ErrorMiddleware';
@@ -39,6 +40,7 @@ class App {
 
     this.app.use(express.json());
     this.app.use(accessControl);
+    this.app.use(cors());
 
     this.app.use(this.loginRoutes.loginRouter);
     this.app.use(this.teamRoutes.teamRouter);
