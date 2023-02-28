@@ -6,7 +6,7 @@ const doc = {
     title: 'Trybe Futebol Clube API',
     description: 'Esta documentação é destinada ao projeto Trybe Futebol Clube.',
   },
-  host: 'localhost:3000',
+  host: `${process.env.MYSQLHOST}:${process.env.PORT}`,
   basePath: '/',
   schemes: ['http'],
   consumes: ['application/json'],
