@@ -2,6 +2,7 @@
 **/node_modules*
 **/.nyc_output
 **/*.log
+**/build*
 coverage
 front.eval
 back.eval
