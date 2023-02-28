@@ -11,6 +11,9 @@ const config: Options = {
   define: {
     timestamps: true,
   },
+  dialectOptions: {
+    schema: 'public'
+  }
 }
 
 module.exports = config;

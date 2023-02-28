@@ -161,6 +161,5 @@ const endpointsFiles = [
 ];
 
 swaggerAutogen(outputFile, endpointsFiles, doc).then(async () => {
-  // eslint-disable-next-line import/extensions
   await import('./build/app.js'); // Your project's root file
 });
