@@ -51,7 +51,7 @@ class App {
     this.app.use(ErrorMiddleware.catchError);
   }
 
-  public start(PORT: string | undefined):void {
+  public start(PORT: string | number):void {
     this.app.listen(PORT, () => console.log(`Running on port ${PORT}`));
   }
 }

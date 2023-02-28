@@ -1,5 +1,4 @@
 const swaggerAutogen = require('swagger-autogen')();
-require('dotenv/config');
 
 const doc = {
   info: {
@@ -7,9 +6,9 @@ const doc = {
     title: 'Trybe Futebol Clube API',
     description: 'Esta documentação é destinada ao projeto Trybe Futebol Clube.',
   },
-  host: `back-end-production-1a4a.up.railway.app`,
+  host: 'back-end-production-1a4a.up.railway.app',
   basePath: '/',
-  schemes: ['https', 'http'],
+  schemes: ['https'],
   consumes: ['application/json'],
   produces: ['application/json'],
   tags: [
