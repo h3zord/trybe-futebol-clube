@@ -38,9 +38,9 @@ class App {
       next();
     };
 
+    this.app.use(cors());
     this.app.use(express.json());
     this.app.use(accessControl);
-    this.app.use(cors());
 
     this.app.use(this.loginRoutes.loginRouter);
     this.app.use(this.teamRoutes.teamRouter);
