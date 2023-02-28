@@ -3,7 +3,7 @@ services:
   frontend:
     build: ./frontend
     ports:
-      - 3000:3000
+      - 3001:3001
     platform: linux/x86_64
     working_dir: /app-frontend
     depends_on:
@@ -19,21 +19,23 @@ services:
     container_name: app_backend
     build: ./backend
     ports:
-      - 3001:3001
+      - 3000:3000
     platform: linux/x86_64
     working_dir: /app-backend
     depends_on:
       db:
         condition: service_healthy
     environment:
-      - APP_PORT=3001
+      - APPPORT=3000
       - JWT_SECRET=jwt_secret
       # Os dados abaixo se referem ao container `db`
       # Dica: Relembre aqui da comunicação interna entre containers
-      - DB_USER=root
-      - DB_PASS=123456
-      - DB_HOST=db
-      - DB_PORT=3306
+      - APP_PORT=3000
+      - MYSQLUSER=root
+      - MYSQLDATABASE=TRYBE_FUTEBOL_CLUBE
+      - MYSQLPASSWORD=123456
+      - MYSQLHOST=localhost
+      - MYSQLPORT=3002
     healthcheck:
       test: ["CMD", "lsof", "-t", "-i:3001"] # Caso utilize outra porta interna para o back, altere ela aqui também
       timeout: 10s
