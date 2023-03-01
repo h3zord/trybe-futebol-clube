@@ -1,44 +1,44 @@
 version: '3.9'
 services:
-  # frontend:
-  #   build: ./frontend
-  #   ports:
-  #     - 3001:3001
-  #   platform: linux/x86_64
-  #   working_dir: /app-frontend
-  #   depends_on:
-  #     backend:
-  #       condition: service_healthy
-  #   # Os `healthcheck` devem garantir que a aplicação
-  #   # está operacional, antes de liberar o container
-  #   healthcheck:
-  #     test: ["CMD", "lsof", "-t", "-i:3000"]  # Caso utilize outra porta interna para o front, altere ela aqui também
-  #     timeout: 10s
-  #     retries: 5
-  # backend:
-  #   container_name: app_backend
-  #   build: ./backend
-  #   ports:
-  #     - 3000:3000
-  #   platform: linux/x86_64
-  #   working_dir: /app-backend
-  #   depends_on:
-  #     db:
-  #       condition: service_healthy
-  #   environment:
-  #     - JWT_SECRET=jwt_secret
-  #     # Os dados abaixo se referem ao container `db`
-  #     # Dica: Relembre aqui da comunicação interna entre containers
-  #     - PORT=3000
-  #     - PGUSER=root
-  #     - PGDATABASE=TRYBE_FUTEBOL_CLUBE
-  #     - PGPASSWORD=123456
-  #     - PGHOST=localhost
-  #     - PGPORT=3002
-  #   healthcheck:
-  #     test: ["CMD", "lsof", "-t", "-i:3001"] # Caso utilize outra porta interna para o back, altere ela aqui também
-  #     timeout: 10s
-  #     retries: 5
+  frontend:
+    build: ./frontend
+    ports:
+      - 3001:3001
+    platform: linux/x86_64
+    working_dir: /app-frontend
+    depends_on:
+      backend:
+        condition: service_healthy
+    # Os `healthcheck` devem garantir que a aplicação
+    # está operacional, antes de liberar o container
+    healthcheck:
+      test: ["CMD", "lsof", "-t", "-i:3000"]  # Caso utilize outra porta interna para o front, altere ela aqui também
+      timeout: 10s
+      retries: 5
+  backend:
+    container_name: app_backend
+    build: ./backend
+    ports:
+      - 3000:3000
+    platform: linux/x86_64
+    working_dir: /app-backend
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      - JWT_SECRET=jwt_secret
+      # Os dados abaixo se referem ao container `db`
+      # Dica: Relembre aqui da comunicação interna entre containers
+      - PORT=3000
+      - PGUSER=root
+      - PGDATABASE=TRYBE_FUTEBOL_CLUBE
+      - PGPASSWORD=123456
+      - PGHOST=localhost
+      - PGPORT=3002
+    healthcheck:
+      test: ["CMD", "lsof", "-t", "-i:3001"] # Caso utilize outra porta interna para o back, altere ela aqui também
+      timeout: 10s
+      retries: 5
   db:
     image: postgres
     container_name: db
