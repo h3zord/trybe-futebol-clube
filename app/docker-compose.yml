@@ -3,9 +3,10 @@ services:
   frontend:
     build: ./frontend
     ports:
-      - 3001:3001
+      - 3000:3000
     platform: linux/x86_64
     working_dir: /app-frontend
+    command: sh -c "npm install; npm start"
     depends_on:
       backend:
         condition: service_healthy
@@ -19,9 +20,10 @@ services:
     container_name: app_backend
     build: ./backend
     ports:
-      - 3000:3000
+      - 3001:3001
     platform: linux/x86_64
     working_dir: /app-backend
+    command: sh -c "npm install; npm start"
     depends_on:
       db:
         condition: service_healthy
@@ -29,12 +31,12 @@ services:
       - JWT_SECRET=jwt_secret
       # Os dados abaixo se referem ao container `db`
       # Dica: Relembre aqui da comunicação interna entre containers
-      - PORT=3000
+      - PORT=3001
       - PGUSER=root
       - PGDATABASE=TRYBE_FUTEBOL_CLUBE
       - PGPASSWORD=123456
-      - PGHOST=localhost
-      - PGPORT=3002
+      - PGHOST=db
+      - PGPORT=5432
     healthcheck:
       test: ["CMD", "lsof", "-t", "-i:3001"] # Caso utilize outra porta interna para o back, altere ela aqui também
       timeout: 10s
@@ -44,8 +46,9 @@ services:
     container_name: db
     platform: linux/x86_64
     ports:
-      - 3002:5432
+      - 5432:5432
     environment:
+      - POSTGRES_USER=root
       - POSTGRES_PASSWORD=123456
       - PGDATABASE=TRYBE_FUTEBOL_CLUBE
     restart: 'always'

@@ -4,8 +4,4 @@ WORKDIR /app-frontend
 
 COPY . .
 
-EXPOSE 3001
-
-RUN npm install
-
-CMD ["npm", "start"]
+EXPOSE 3000
