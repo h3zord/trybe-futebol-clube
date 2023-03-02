@@ -6,7 +6,7 @@ services:
       - 3000:3000
     platform: linux/x86_64
     working_dir: /app-frontend
-    command: sh -c "npm install; npm start"
+    command: "npm start"
     depends_on:
       backend:
         condition: service_healthy
@@ -23,7 +23,6 @@ services:
       - 3001:3001
     platform: linux/x86_64
     working_dir: /app-backend
-    command: sh -c "npm install; npm start"
     depends_on:
       db:
         condition: service_healthy
