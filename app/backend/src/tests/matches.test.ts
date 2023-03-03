@@ -2,9 +2,7 @@ import * as sinon from 'sinon';
 import * as chai from 'chai';
 // @ts-ignore
 import chaiHttp = require('chai-http');
-
 import App from '../app';
-
 import { Response } from 'superagent';
 import MatchModel from '../database/models/MatchModel';
 import { allMatches, createdMatch, progressFalse, progressTrue, sameTeams, unknownTeam } from './mocks/matchesMock';

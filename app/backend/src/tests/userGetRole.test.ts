@@ -2,9 +2,7 @@ import * as sinon from 'sinon';
 import * as chai from 'chai';
 // @ts-ignore
 import chaiHttp = require('chai-http');
-
 import App from '../app';
-
 import { Response } from 'superagent';
 import UserModel from '../database/models/UserModel';
 
@@ -29,7 +27,7 @@ describe('Testando as roles e validações', () => {
       } as UserModel);
   });
 
-  afterEach(()=> {
+  afterEach(() => {
     (UserModel.findOne as sinon.SinonStub).restore();
   })
 
@@ -70,5 +68,4 @@ describe('Testando as roles e validações', () => {
 
     expect(chaiHttpResponse.body).to.be.deep.equal({ message: 'Token must be a valid token' });
   });
-
 });
