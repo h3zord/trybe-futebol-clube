@@ -22,19 +22,19 @@ export default class MatchRoutes {
         .create(req, res)
 
       // #swagger.tags = ['Match']
-      // #swagger.summary = 'Criar uma nova partida'
+      // #swagger.summary = 'Cadastrar uma nova partida'
       // #swagger.description = 'Endpoint para cadastrar uma nova partida no banco de dados.'
 
       /* #swagger.parameters['authorization'] = {
         in: 'header',
-        description: 'Token necessário para criar uma nova partida.',
+        description: 'Token necessário para cadastrar uma nova partida.',
         type: 'string',
         default: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImVtYWlsIjoiYWRtaW5AYWRtaW4uY29tIiwicGFzc3dvcmQiOiJzZWNyZXRfYWRtaW4ifSwiaWF0IjoxNjc3MDI4Njg3LCJleHAiOjE3NjMzNDIyODd9.7hkBkM1PUqUZ1rmmLMqCfIryM4qWPfgT_3XFU3khFrk'
       } */
 
       /* #swagger.parameters['info'] = {
         in: 'body',
-        description: 'Informações necessárias para criar uma nova partida.',
+        description: 'Informações necessárias para cadastrar uma nova partida.',
         type: 'object',
         schema: { $ref: "#/definitions/Match" },
       } */
@@ -61,7 +61,7 @@ export default class MatchRoutes {
 
       /* #swagger.responses[422] = {
         schema: { $ref: "#/definitions/EqualTeamsError" },
-        description: 'Erro! A requisição falhou! Não é possível criar uma partida com dois times iguais.'
+        description: 'Erro! A requisição falhou! Não é possível cadastrar uma partida com dois times iguais.'
       } */
 
       /* #swagger.responses[500] = {
@@ -98,7 +98,7 @@ export default class MatchRoutes {
         .updateProgress(req, res)
 
       // #swagger.tags = ['Match']
-      // #swagger.summary = 'Atualiza o status de uma partida em andamento para finalizada'
+      // #swagger.summary = 'Atualizar o status de uma partida em andamento para finalizada'
       // #swagger.description = 'Endpoint para atualizar o status de uma partida cadastrada no banco de dados para finalizada.'
 
       /* #swagger.responses[200] = {
@@ -118,7 +118,7 @@ export default class MatchRoutes {
         .updateGoals(req, res)
 
       // #swagger.tags = ['Match']
-      // #swagger.summary = 'Atualiza o placar da partida'
+      // #swagger.summary = 'Atualizar o placar da partida'
       // #swagger.description = 'Endpoint para atualizar o placar de uma partida cadastrada no banco de dados.'
 
       /* #swagger.parameters['id'] = {
