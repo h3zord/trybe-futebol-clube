@@ -17,11 +17,11 @@ O <strong>Trybe Futebol Clube</strong> é um site informativo que fornece inform
 
 A API é capaz de acessar o banco de dados e retornar informações sobre todos os times, ou somente um time específico por meio do seu ID. Além disso, ela retorna informações sobre todas as partidas ou apenas as partidas em andamento ou finalizadas. A API possui endpoints para criar partidas em andamento, atualizar o placar e o status de progresso, e filtrar a classificação geral do campeonato, bem como a classificação dos times jogando em casa ou como visitantes.
 
-Para criar a aplicação, foi utilizado o Docker para criar três containers, sendo dois para o ambiente preparado para o Node.js (um para o front-end e outro para o back-end) e um terceiro para o banco de dados MySQL. A aplicação foi escrita com o TypeScript e o Express.js para gerenciar rotas, tratar requisições HTTP e definir middlewares. O JWT foi usado para autenticar o token durante as requisições, e a biblioteca Sequelize foi utilizada como ORM para abstrair operações do MySQL.
+Para criar a aplicação, foi utilizado o docker para criar três containers, sendo dois para o ambiente preparado para o node.js (um para o front-end e outro para o back-end) e um terceiro para o banco de dados postgreSQL. A aplicação foi escrita com o typescript e o express.js para gerenciar rotas, tratar requisições HTTP e definir middlewares. O JWT foi usado para autenticar o token durante as requisições, e a biblioteca sequelize foi utilizada como ORM para abstrair operações do postgreSQL.
 
-Para a implementação de testes de integração, foram utilizadas as bibliotecas Mocha, Chai e Sinon, com uma cobertura de testes de aproximadamente 90% da aplicação back-end.
+Para a implementação de testes de integração, foram utilizadas as bibliotecas mocha, chai e sinon, com uma cobertura de testes de aproximadamente 90% da aplicação back-end.
 
-## Linguagens e ferramentas:
+## Linguagens e ferramentas
 - Docker
 - Node.js
 - Typescript
@@ -33,7 +33,7 @@ Para a implementação de testes de integração, foram utilizadas as biblioteca
 - Chai
 - Sinon
 
-## Instalação e execução com Docker:
+## Instalação e execução com docker
 
 ### 1 - Clone o repositório:
 ```
