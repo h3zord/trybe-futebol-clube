@@ -126,7 +126,6 @@
         ],
         "summary": "Listar todos os times",
         "description": "Endpoint para listar todos os times cadastrados no banco de dados.",
-        "parameters": [],
         "responses": {
           "200": {
             "schema": {
@@ -174,20 +173,20 @@
         "tags": [
           "Match"
         ],
-        "summary": "Criar uma nova partida",
+        "summary": "Cadastrar uma nova partida",
         "description": "Endpoint para cadastrar uma nova partida no banco de dados.",
         "parameters": [
           {
             "name": "authorization",
             "in": "header",
-            "description": "Token necessário para criar uma nova partida.",
+            "description": "Token necessário para cadastrar uma nova partida.",
             "type": "string",
             "default": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImVtYWlsIjoiYWRtaW5AYWRtaW4uY29tIiwicGFzc3dvcmQiOiJzZWNyZXRfYWRtaW4ifSwiaWF0IjoxNjc3MDI4Njg3LCJleHAiOjE3NjMzNDIyODd9.7hkBkM1PUqUZ1rmmLMqCfIryM4qWPfgT_3XFU3khFrk"
           },
           {
             "name": "info",
             "in": "body",
-            "description": "Informações necessárias para criar uma nova partida.",
+            "description": "Informações necessárias para cadastrar uma nova partida.",
             "schema": {
               "$ref": "#/definitions/Match"
             }
@@ -222,7 +221,7 @@
             "schema": {
               "$ref": "#/definitions/EqualTeamsError"
             },
-            "description": "Erro! A requisição falhou! Não é possível criar uma partida com dois times iguais."
+            "description": "Erro! A requisição falhou! Não é possível cadastrar uma partida com dois times iguais."
           },
           "500": {
             "schema": {
@@ -262,7 +261,7 @@
         "tags": [
           "Match"
         ],
-        "summary": "Atualiza o status de uma partida em andamento para finalizada",
+        "summary": "Atualizar o status de uma partida em andamento para finalizada",
         "description": "Endpoint para atualizar o status de uma partida cadastrada no banco de dados para finalizada.",
         "parameters": [
           {
@@ -293,7 +292,7 @@
         "tags": [
           "Match"
         ],
-        "summary": "Atualiza o placar da partida",
+        "summary": "Atualizar o placar da partida",
         "description": "Endpoint para atualizar o placar de uma partida cadastrada no banco de dados.",
         "parameters": [
           {
@@ -333,9 +332,8 @@
         "tags": [
           "LeaderBoard"
         ],
-        "summary": "Lista a classificação geral do campeonato",
+        "summary": "Listar a classificação geral do campeonato",
         "description": "Endpoint para listar a classificação geral do campeonato de acordo com as partidas cadastradas no banco de dados.",
-        "parameters": [],
         "responses": {
           "200": {
             "schema": {
@@ -351,9 +349,8 @@
         "tags": [
           "LeaderBoard"
         ],
-        "summary": "Lista a classificação dos times como mandante no campeonato",
+        "summary": "Listar a classificação dos times como mandante no campeonato",
         "description": "Endpoint para listar a classificação dos times como mandante no campeonato de acordo com as partidas cadastradas no banco de dados.",
-        "parameters": [],
         "responses": {
           "200": {
             "schema": {
@@ -369,9 +366,8 @@
         "tags": [
           "LeaderBoard"
         ],
-        "summary": "Lista a classificação dos times como visitante no campeonato",
+        "summary": "Listar a classificação dos times como visitante no campeonato",
         "description": "Endpoint para listar a classificação dos times como visitante no campeonato de acordo com as partidas cadastradas no banco de dados.",
-        "parameters": [],
         "responses": {
           "200": {
             "schema": {
