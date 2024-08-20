@@ -1,10 +1,5 @@
 <h1 align="center">Boas-vindas ao repositório do Trybe Futebol Clube!</h1>
 
-<h2 align="center">
-  <a href="https://trybe-fc.up.railway.app/doc" target="_blank">
-    Swagger
-  </a>
-</h2>
 <br/>
 
 ## Objetivo
